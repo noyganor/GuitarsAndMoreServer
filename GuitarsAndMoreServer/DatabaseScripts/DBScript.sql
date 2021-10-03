@@ -2,20 +2,14 @@
 Create Database GuitarsAndMore
 Go
 
-Use GuitarsAndMore
-Go
-
-
-Create Table Users (
-ID int Identity primary key,
-Email nvarchar(100) not null,
-FirstName nvarchar(30) not null,
-LastName nvarchar(30) not null,
-UserPswd nvarchar(30) not null,
-CONSTRAINT UC_Email UNIQUE(Email)
-)
-
-Go
-
-INSERT INTO Users VALUES ('kuku@kuku.com','kuku','kaka','1234');
-GO
+CREATE TABLE Users (
+    UserID INT identity(1,1) PRIMARY KEY NOT NULL,
+    Email NVARCHAR(255) UNIQUE NOT NULL,
+    Nickname NVARCHAR(255) NOT NULL,
+    Password NVARCHAR(255) NOT NULL,
+    VerPassword INT NOT NULL,
+    PhoneNum INT NOT NULL,
+    Gender INT NOT NULL,
+    FavBand NVARCHAR(255) NULL,
+    JoinDate DATETIME NOT NULL
+);
