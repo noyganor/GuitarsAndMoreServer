@@ -340,3 +340,28 @@ SET IDENTITY_INSERT [dbo].[Categories] OFF
 GO
 
 
+ALTER TABLE Towns
+ADD AreaID int FOREIGN KEY REFERENCES Areas(AreaID)
+GO
+
+INSERT INTO Areas (Area) VALUES (N'צפון')
+INSERT INTO Areas (Area) VALUES (N'מרכז')
+INSERT INTO Areas (Area) VALUES (N'דרום')
+GO
+
+UPDATE Towns SET AreaID = 1 
+UPDATE Towns SET AreaID = 2 WHERE TownID <= 17 or TownID in (36,37,39,40)
+UPDATE Towns SET AreaID = 3 WHERE TownID in (18,19,21,22,24,25,38)
+GO
+
+DROP TABLe TownsInAreas
+GO
+
+ALTER TABLE Users
+ALTER COLUMN VerPassword NVARCHAR(255)
+Go
+
+INSERT INTO Users ([Email],[Nickname],[Pass],[VerPassword],[PhoneNum],[GenderID],[FavBand])
+VALUES ('noiganor12@gmail.com', 'Noyga', 'nganor', 'nganor', '0505689857', '1', 'Ed Sheeran')
+Go
+
