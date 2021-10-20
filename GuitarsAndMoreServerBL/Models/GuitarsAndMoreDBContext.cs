@@ -20,8 +20,10 @@ namespace GuitarsAndMoreServerBL.Models
         public User Login(string email, string pswd)
         {
             User user = this.Users
-                //.Include(us => us.UserContacts)
-                //.ThenInclude(uc => uc.ContactPhones)
+                .Include(us => us.Posts)
+                .Include(uc => uc.UserFavoritePosts)
+                .Include(us => us.UserReviewSellers)
+                .Include(us => us.UserReviewUsers)
                 .Where(u => u.Email == email && u.Pass == pswd).FirstOrDefault();
 
             return user;

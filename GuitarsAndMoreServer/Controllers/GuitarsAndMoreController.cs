@@ -43,5 +43,8 @@ namespace GuitarsAndMoreServer.Controllers
                 return null;
             }
         }
+
+        [Route("SignUp")]
+        [HttpPost]
     }
 }
