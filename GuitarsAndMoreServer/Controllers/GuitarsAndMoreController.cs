@@ -46,5 +46,20 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("SignUp")]
         [HttpPost]
+        public User SignUp(User u)
+        {
+            try
+            {
+                context.Users.Add(u);
+                context.SaveChanges();
+                return u;
+            }
+
+            catch(Exception e)
+            {
+                return null;
+            }
+            
+        }
     }
 }
