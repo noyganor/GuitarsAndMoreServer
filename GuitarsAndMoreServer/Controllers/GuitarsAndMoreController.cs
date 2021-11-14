@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GuitarsAndMoreServerBL.Models;
+using GuitarsAndMoreServer.DTO;
 
 namespace GuitarsAndMoreServer.Controllers
 {
@@ -60,6 +61,22 @@ namespace GuitarsAndMoreServer.Controllers
                 return null;
             }
             
+        }
+
+        [Route("GetLookUpTables")]
+        [HttpGet]
+        public LookUpTables GetLookUpTable()
+        {
+            LookUpTables tables = new LookUpTables()
+            {
+                Genders = context.Genders.ToList(),
+                Areas = context.Areas.ToList(),
+                Models = context.Models.ToList(),
+                Producers = context.Producers.ToList(),
+                Towns = context.Towns.ToList()
+            };
+
+            return tables;
         }
     }
 }
