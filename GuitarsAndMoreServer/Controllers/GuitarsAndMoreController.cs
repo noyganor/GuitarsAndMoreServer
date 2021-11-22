@@ -56,11 +56,11 @@ namespace GuitarsAndMoreServer.Controllers
                 return u;
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
-            
+
         }
 
         [Route("GetLookUpTables")]
@@ -78,5 +78,21 @@ namespace GuitarsAndMoreServer.Controllers
 
             return tables;
         }
+
+
+        //check
+        [Route("GetPosts")]
+        [HttpGet]
+        public List<Post> GetListOfPosts()
+        {
+            List<Post> posts = new List<Post>();
+            foreach( Post p in context.Posts.ToList())
+            {           
+                posts.Add(p);
+                
+            }
+            
+        }
+    
     }
 }
