@@ -67,31 +67,43 @@ namespace GuitarsAndMoreServer.Controllers
         [HttpGet]
         public LookUpTables GetLookUpTable()
         {
-            LookUpTables tables = new LookUpTables()
+            try
             {
-                Genders = context.Genders.ToList(),
-                Areas = context.Areas.ToList(),
-                Models = context.Models.ToList(),
-                Producers = context.Producers.ToList(),
-                Towns = context.Towns.ToList()
-            };
+                LookUpTables tables = new LookUpTables()
+                {
+                    Genders = context.Genders.ToList(),
+                    Areas = context.Areas.ToList(),
+                    Models = context.Models.ToList(),
+                    ModelReviews = context.ModelReviews.ToList(),
+                    Categories = context.Categories.ToList(),
+                    Producers = context.Producers.ToList(),
+                    Towns = context.Towns.ToList()
+                };
 
-            return tables;
+                return tables;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+            
         }
 
 
-        //check
         [Route("GetPosts")]
         [HttpGet]
         public List<Post> GetListOfPosts()
         {
-            List<Post> posts = new List<Post>();
-            foreach( Post p in context.Posts.ToList())
-            {           
-                posts.Add(p);
-                
+            try
+            {
+                return context.GetListOfPosts();
             }
-            
+
+            catch(Exception e)
+            {
+                return null;
+            }
         }
     
     }

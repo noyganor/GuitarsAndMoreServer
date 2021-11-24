@@ -13,5 +13,7 @@ namespace GuitarsAndMoreServer.DTO
         public List<Town> Towns { get; set; }
         public List<Producer> Producers { get; set; }
         public List<Model> Models { get; set; }
+        public List<Category> Categories { get; set; }
+        public List<ModelReview> ModelReviews { get; set; }
     }
 }
