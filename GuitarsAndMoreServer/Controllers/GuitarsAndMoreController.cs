@@ -60,7 +60,6 @@ namespace GuitarsAndMoreServer.Controllers
             {
                 return null;
             }
-
         }
 
         [Route("GetLookUpTables")]
