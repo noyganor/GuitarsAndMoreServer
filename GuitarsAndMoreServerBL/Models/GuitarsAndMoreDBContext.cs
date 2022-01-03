@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
 
 #nullable disable
 
@@ -16,8 +11,6 @@ namespace GuitarsAndMoreServerBL.Models
         public GuitarsAndMoreDBContext()
         {
         }
-
-        
 
         public GuitarsAndMoreDBContext(DbContextOptions<GuitarsAndMoreDBContext> options)
             : base(options)
@@ -41,7 +34,7 @@ namespace GuitarsAndMoreServerBL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=GuitarsAndMoreDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=GuitarsAndMoreDB;Trusted_Connection=True;");
             }
         }
 
@@ -126,6 +119,8 @@ namespace GuitarsAndMoreServerBL.Models
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
+                entity.Property(e => e.ImageUrl).HasMaxLength(255);
+
                 entity.Property(e => e.Link).HasMaxLength(255);
 
                 entity.Property(e => e.ModelId).HasColumnName("ModelID");
@@ -199,7 +194,7 @@ namespace GuitarsAndMoreServerBL.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Email, "UQ__Users__A9D105341106A5DE")
+                entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E9D9F81E")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");

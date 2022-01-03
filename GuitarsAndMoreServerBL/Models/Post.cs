@@ -21,6 +21,7 @@ namespace GuitarsAndMoreServerBL.Models
         public double Price { get; set; }
         public string Pdescription { get; set; }
         public string Link { get; set; }
+        public string ImageUrl { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Model Model { get; set; }
