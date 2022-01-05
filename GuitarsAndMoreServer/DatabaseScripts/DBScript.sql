@@ -377,6 +377,9 @@ INSERT INTO [dbo].[Models]
      VALUES
            ('E0541F', 1)
 
+ALTER Table Post
+ADD ImageUrl nvarchar(250) 
+GO
 
 INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link])
 VALUES ('1', '1', '1', '1', '600', ' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo')

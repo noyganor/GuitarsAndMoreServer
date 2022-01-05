@@ -104,6 +104,50 @@ namespace GuitarsAndMoreServer.Controllers
                 return null;
             }
         }
+
+        [Route("AddPostToFavorites")]
+        [HttpPost]
+        public bool AddPostToUserFavorites([FromBody] Post p, [FromQuery] bool isFavorite)
+        {
+            
+            try
+            {
+                User theUser;
+                theUser = HttpContext.Session.GetObject<User>("theUser");
+
+                if (theUser != null)
+                {
+                    UserFavoritePost uFavPost = new UserFavoritePost();
+                    uFavPost.UserId = theUser.UserId;
+                    uFavPost.PostId = p.PostId;
+                    
+                    if (isFavorite)
+                    {
+                        context.UserFavoritePosts.Add(uFavPost);
+                        
+                    }
+                    else
+                    {
+                        context.UserFavoritePosts.Remove(uFavPost);
+                    }
+                    context.SaveChanges();
+                    return true;
+
+                }
+                else
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                    return false;
+                }
+                
+            }
+
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     
     }
 }
