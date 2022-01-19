@@ -107,7 +107,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("AddPostToFavorites")]
         [HttpPost]
-        public bool AddPostToUserFavorites([FromBody] Post p, [FromQuery] bool isFavorite)
+        public bool AddPostToUserFavorites([FromBody] Post p)
         {
             
             try
@@ -120,17 +120,17 @@ namespace GuitarsAndMoreServer.Controllers
                     UserFavoritePost uFavPost = new UserFavoritePost();
                     uFavPost.UserId = theUser.UserId;
                     uFavPost.PostId = p.PostId;
-                    
-                    if (isFavorite)
-                    {
-                        context.UserFavoritePosts.Add(uFavPost);
-                        
-                    }
-                    else
+
+                    try
                     {
                         context.UserFavoritePosts.Remove(uFavPost);
+                        context.SaveChanges();
                     }
-                    context.SaveChanges();
+                    catch(Exception ex)
+                    {
+                        context.UserFavoritePosts.Add(uFavPost);
+                        context.SaveChanges();
+                    }
                     return true;
 
                 }
