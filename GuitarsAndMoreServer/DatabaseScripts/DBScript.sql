@@ -372,10 +372,20 @@ INSERT INTO [dbo].[Producers]
      VALUES
            ('Fender')
 
+INSERT INTO [dbo].[Producers]
+           ([Producer])
+     VALUES
+           ('Takamine')
+
 INSERT INTO [dbo].[Models]
            ([ModelName], [ProducerID])
      VALUES
            ('E0541F', 1)
+
+INSERT INTO [dbo].[Models]
+           ([ModelName], [ProducerID])
+     VALUES
+           ('ET986K', 2)
 
 ALTER Table Post
 ADD ImageUrl nvarchar(250) 
@@ -385,3 +395,23 @@ INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription
 VALUES ('1', '1', '1', '1', '600', ' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo')
 Go
 
+
+ALTER TABLE Post
+ADD ProducerID int FOREIGN KEY REFERENCES Producers(ProducerID)
+GO
+
+ALTER TABLE Post
+ADD PhoneNum NVARCHAR(255)
+GO
+
+INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID])
+VALUES ('1', '1', '2', '4', '850', ' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2')
+Go
+
+DELETE Post WHERE PostID=2
+GO
+
+
+INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
+VALUES ('1', '1', '2', '4', '850', ' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.takamine.com%2Fg-series&psig=AOvVaw0lf78jLfwOm1BC11_-Z4sY&ust=1643285062066000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCLi37oawz_UCFQAAAAAdAAAAABAD')
+Go
