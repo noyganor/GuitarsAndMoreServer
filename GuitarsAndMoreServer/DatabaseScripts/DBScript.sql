@@ -1,6 +1,8 @@
 ﻿
 
 Use master
+drop database GuitarsAndMoreDB
+Go
 Create Database GuitarsAndMoreDB
 Go
 
@@ -390,12 +392,6 @@ INSERT INTO [dbo].[Models]
 ALTER Table Post
 ADD ImageUrl nvarchar(250) 
 GO
-
-INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
-VALUES ('1', '1', '1', '1', '600', ' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', ' ' )
-Go
-
-
 ALTER TABLE Post
 ADD ProducerID int FOREIGN KEY REFERENCES Producers(ProducerID)
 GO
@@ -404,11 +400,11 @@ ALTER TABLE Post
 ADD PhoneNum NVARCHAR(255)
 GO
 
+INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
+VALUES ('1', '1', '1', '1', '600', ' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', ' ' )
+Go
+
 
 INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
 VALUES ('1', '1', '2', '4', '850', ' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', 'https://www.takamine.com/templates/default/images/g90.png')
 Go
-select * from Producers
-DELETE Producers WHERE ProducerID=3
-DELETE Producers WHERE ProducerID=4 
-delete from Producers

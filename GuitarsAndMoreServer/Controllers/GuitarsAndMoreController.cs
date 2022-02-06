@@ -106,6 +106,21 @@ namespace GuitarsAndMoreServer.Controllers
             }
         }
 
+        [Route("GetModels")]
+        [HttpGet]
+        public List<Model> GetListOfModels()
+        {
+            try
+            {
+                return context.GetListOfModels();
+            }
+
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
         [Route("AddPostToFavorites")]
         [HttpPost]
         public bool AddPostToUserFavorites([FromBody] Post p)

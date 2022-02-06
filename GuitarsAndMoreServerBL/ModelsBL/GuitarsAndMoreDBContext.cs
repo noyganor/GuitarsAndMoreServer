@@ -32,5 +32,14 @@ namespace GuitarsAndMoreServerBL.Models
                            .Include(u => u.User).ToList();
             return p;
         }
+
+        public List<Model> GetListOfModels()
+        {
+            List<Model> p = Models.ToList();
+                           //.Include(p => p.ProducerId)
+                           //.Include(m => m.ModelId)
+                           //.Include(u => u.ModelName).ToList();
+            return p;
+        }
     }
 }
