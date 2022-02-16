@@ -122,8 +122,8 @@ namespace GuitarsAndMoreServer.Controllers
         }
 
         [Route("AddPostToFavorites")]
-        [HttpPost]
-        public bool AddPostToUserFavorites([FromBody] Post p)
+        [HttpGet]
+        public bool AddPostToUserFavorites([FromQuery] int postID)
         {
             
             try
@@ -135,7 +135,7 @@ namespace GuitarsAndMoreServer.Controllers
                 {
                     UserFavoritePost uFavPost = new UserFavoritePost();
                     uFavPost.UserId = theUser.UserId;
-                    uFavPost.PostId = p.PostId;
+                    uFavPost.PostId = postID;
 
                     try
                     {
