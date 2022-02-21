@@ -408,3 +408,5 @@ Go
 INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
 VALUES ('1', '1', '2', '4', '850', ' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', 'https://www.takamine.com/templates/default/images/g90.png')
 Go
+
+select *from Categories
