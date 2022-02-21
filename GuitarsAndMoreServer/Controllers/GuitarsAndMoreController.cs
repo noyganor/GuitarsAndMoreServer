@@ -199,5 +199,21 @@ namespace GuitarsAndMoreServer.Controllers
             return Forbid();
         }
 
+        [Route("AddPost")]
+        [HttpPost]
+        public bool AddPost(Post p)
+        {
+            try
+            {
+                context.Posts.Add(p);
+                context.SaveChanges();
+                return true;
+            }
+
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
