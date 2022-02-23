@@ -34,7 +34,7 @@ namespace GuitarsAndMoreServerBL.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=GuitarsAndMoreDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost\\sqlexpress;Database=GuitarsAndMoreDB;Trusted_Connection=True;");
             }
         }
 
@@ -119,7 +119,7 @@ namespace GuitarsAndMoreServerBL.Models
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
-                entity.Property(e => e.ImageUrl).HasMaxLength(255);
+                entity.Property(e => e.ImageUrl).HasMaxLength(250);
 
                 entity.Property(e => e.Link).HasMaxLength(255);
 
@@ -129,6 +129,10 @@ namespace GuitarsAndMoreServerBL.Models
                     .IsRequired()
                     .HasMaxLength(255)
                     .HasColumnName("PDescription");
+
+                entity.Property(e => e.PhoneNum).HasMaxLength(255);
+
+                entity.Property(e => e.ProducerId).HasColumnName("ProducerID");
 
                 entity.Property(e => e.ReviewId).HasColumnName("ReviewID");
 
@@ -146,6 +150,11 @@ namespace GuitarsAndMoreServerBL.Models
                     .WithMany(p => p.Posts)
                     .HasForeignKey(d => d.ModelId)
                     .HasConstraintName("FK_Post_ModelID");
+
+                entity.HasOne(d => d.Producer)
+                    .WithMany(p => p.Posts)
+                    .HasForeignKey(d => d.ProducerId)
+                    .HasConstraintName("FK__Post__ProducerID__49C3F6B7");
 
                 entity.HasOne(d => d.Review)
                     .WithMany(p => p.Posts)
@@ -194,7 +203,7 @@ namespace GuitarsAndMoreServerBL.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E9D9F81E")
+                entity.HasIndex(e => e.Email, "UQ__Users__A9D10534DD4519FA")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");

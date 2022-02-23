@@ -22,9 +22,12 @@ namespace GuitarsAndMoreServerBL.Models
         public string Pdescription { get; set; }
         public string Link { get; set; }
         public string ImageUrl { get; set; }
+        public int? ProducerId { get; set; }
+        public string PhoneNum { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Model Model { get; set; }
+        public virtual Producer Producer { get; set; }
         public virtual UserReview Review { get; set; }
         public virtual Town Town { get; set; }
         public virtual User User { get; set; }
