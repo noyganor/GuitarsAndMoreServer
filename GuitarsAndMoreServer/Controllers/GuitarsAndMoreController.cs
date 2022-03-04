@@ -88,7 +88,7 @@ namespace GuitarsAndMoreServer.Controllers
                 Console.WriteLine(e.Message);
                 return null;
             }
-            
+
         }
 
 
@@ -101,7 +101,7 @@ namespace GuitarsAndMoreServer.Controllers
                 return context.GetListOfPosts();
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 return null;
             }
@@ -126,7 +126,7 @@ namespace GuitarsAndMoreServer.Controllers
         [HttpGet]
         public bool AddPostToUserFavorites([FromQuery] int postID)
         {
-            
+
             try
             {
                 User theUser;
@@ -143,7 +143,7 @@ namespace GuitarsAndMoreServer.Controllers
                         context.UserFavoritePosts.Remove(uFavPost);
                         context.SaveChanges();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         context.UserFavoritePosts.Add(uFavPost);
                         context.SaveChanges();
@@ -156,10 +156,10 @@ namespace GuitarsAndMoreServer.Controllers
                     Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
                     return false;
                 }
-                
+
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return false;
@@ -209,6 +209,30 @@ namespace GuitarsAndMoreServer.Controllers
                 context.Posts.Add(p);
                 context.SaveChanges();
                 return true;
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        [Route("DeletePost")]
+        [HttpDelete]
+        public bool DeletePost([FromQuery]int postId)
+        {
+            try
+            {
+
+                Post p = context.Posts.Where(t => t.PostId == postId).FirstOrDefault();
+                if (p != null)
+                {
+                    context.Posts.Remove(p);
+                    context.SaveChanges();
+                    return true;
+                }
+                return false;
             }
 
             catch (Exception e)
