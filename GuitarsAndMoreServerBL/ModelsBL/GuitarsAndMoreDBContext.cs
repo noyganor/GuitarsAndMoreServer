@@ -41,5 +41,27 @@ namespace GuitarsAndMoreServerBL.Models
                            //.Include(u => u.ModelName).ToList();
             return p;
         }
+        public User UpdateUserDetalis(User user, User updatedUser)
+        {
+            try
+            {
+                User currentUser = this.Users
+                .Where(u => u.UserId == user.UserId).FirstOrDefault();
+
+                currentUser.Pass = updatedUser.Pass;
+                currentUser.Email = updatedUser.Email;
+                currentUser.PhoneNum = updatedUser.PhoneNum;
+                currentUser.Nickname = updatedUser.Nickname;
+                currentUser.Gender.GenderId = updatedUser.Gender.GenderId;
+                currentUser.FavBand = updatedUser.FavBand;
+                this.SaveChanges();
+                return currentUser;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }

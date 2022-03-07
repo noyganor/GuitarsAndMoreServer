@@ -240,5 +240,40 @@ namespace GuitarsAndMoreServer.Controllers
                 return false;
             }
         }
+
+        [Route("UpdateUserDetails")]
+        [HttpPost]
+        public User UpdateUser([FromBody] User user)
+        {
+            //If user is null the request is bad
+            if (user == null)
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return null;
+            }
+
+            User currentUser = HttpContext.Session.GetObject<User>("theUser");
+            //Check if user logged in and its ID is the same as the contact user ID
+            if (currentUser != null && currentUser.UserId == user.UserId)
+            {
+                User updatedUser = context.UpdateUserDetails(currentUser, user);
+
+                if (updatedUser == null)
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                    return null;
+                }
+
+                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                return updatedUser;
+
+               
+            }
+            else
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                return null;
+            }
+        }
     }
 }
