@@ -49,10 +49,10 @@ namespace GuitarsAndMoreServerBL.Models
                 .Where(u => u.UserId == user.UserId).FirstOrDefault();
 
                 currentUser.Pass = updatedUser.Pass;
-                currentUser.Email = updatedUser.Email;
+                currentUser.Email = currentUser.Email;
                 currentUser.PhoneNum = updatedUser.PhoneNum;
                 currentUser.Nickname = updatedUser.Nickname;
-                currentUser.Gender.GenderId = updatedUser.Gender.GenderId;
+                //currentUser.Gender.GenderId = updatedUser.Gender.GenderId;
                 currentUser.FavBand = updatedUser.FavBand;
                 this.SaveChanges();
                 return currentUser;

@@ -202,25 +202,25 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("AddPost")]
         [HttpPost]
-        public bool AddPost(Post p)
+        public Post AddPost(Post p)
         {
             try
             {
                 context.Posts.Add(p);
                 context.SaveChanges();
-                return true;
+                return p;
             }
 
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return null;
             }
         }
 
         [Route("DeletePost")]
         [HttpDelete]
-        public bool DeletePost([FromQuery]int postId)
+        public bool DeletePost([FromQuery] int postId)
         {
             try
             {
@@ -245,33 +245,60 @@ namespace GuitarsAndMoreServer.Controllers
         [HttpPost]
         public User UpdateUser([FromBody] User user)
         {
-            //If user is null the request is bad
-            if (user == null)
+            try
             {
-                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
-                return null;
-            }
 
-            User currentUser = HttpContext.Session.GetObject<User>("theUser");
-            //Check if user logged in and its ID is the same as the contact user ID
-            if (currentUser != null && currentUser.UserId == user.UserId)
-            {
-                User updatedUser = context.UpdateUserDetails(currentUser, user);
 
-                if (updatedUser == null)
+                //If user is null the request is bad
+                if (user == null)
+                {
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                    return null;
+                }
+
+                User currentUser = HttpContext.Session.GetObject<User>("theUser");
+                //Check if user logged in and its ID is the same as the contact user ID
+                if (currentUser != null && currentUser.UserId == user.UserId)
+                {
+                    User updatedUser = context.UpdateUserDetalis(currentUser, user);
+
+                    if (updatedUser == null)
+                    {
+                        Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                        return null;
+                    }
+
+                    Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
+                    return updatedUser;
+
+
+                }
+                else
                 {
                     Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
                     return null;
                 }
-
-                Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
-                return updatedUser;
-
-               
             }
-            else
+
+            catch (Exception e)
             {
-                Response.StatusCode = (int)System.Net.HttpStatusCode.Forbidden;
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+        [Route("FindGender")]
+        [HttpGet]
+        public string FindGender(int genderId)
+        {
+            try
+            {
+                Gender gender = context.Genders.Where(g => g.GenderId == genderId).FirstOrDefault();
+                return gender.Gender1;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
                 return null;
             }
         }
