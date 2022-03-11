@@ -20,6 +20,7 @@ namespace GuitarsAndMoreServerBL.Models
                 .Include(uc => uc.UserFavoritePosts)
                 .Include(us => us.UserReviewSellers)
                 .Include(us => us.UserReviewUsers)
+                .Include(g => g.Gender)
                 .Where(u => u.Email == email && u.Pass == pswd).FirstOrDefault();
 
             return user;
@@ -52,7 +53,7 @@ namespace GuitarsAndMoreServerBL.Models
                 currentUser.Email = currentUser.Email;
                 currentUser.PhoneNum = updatedUser.PhoneNum;
                 currentUser.Nickname = updatedUser.Nickname;
-                //currentUser.Gender.GenderId = updatedUser.Gender.GenderId;
+                currentUser.Gender = updatedUser.Gender;
                 currentUser.FavBand = updatedUser.FavBand;
                 this.SaveChanges();
                 return currentUser;

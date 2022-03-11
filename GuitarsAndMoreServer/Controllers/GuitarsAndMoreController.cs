@@ -247,8 +247,6 @@ namespace GuitarsAndMoreServer.Controllers
         {
             try
             {
-
-
                 //If user is null the request is bad
                 if (user == null)
                 {
@@ -289,7 +287,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("FindGender")]
         [HttpGet]
-        public string FindGender(int genderId)
+        public string FindGender([FromQuery] int genderId)
         {
             try
             {
