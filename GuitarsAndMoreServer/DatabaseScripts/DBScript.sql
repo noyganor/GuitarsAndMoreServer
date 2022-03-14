@@ -400,13 +400,12 @@ ALTER TABLE Post
 ADD PhoneNum NVARCHAR(255)
 GO
 
-INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
-VALUES ('1', '1', '1', '1', '600', ' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', ' ' )
-Go
+SET IDENTITY_INSERT [dbo].[Post] ON
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (1, NULL, 1, 1, 1, 1, 600, N' .במצב חדש ונמכרת עקב חוסר שימוש .E0541F דגם Fender גיטרה חשמלית אדומה מאת ', N'https://youtu.be/Nvt6fdrrSEo', N' ', 2, N'0505689857')
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (2, NULL, 1, 1, 2, 4, 850, N' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', N'https://youtu.be/Nvt6fdrrSEo', N'https://www.takamine.com/templates/default/images/g90.png', 2, N'0505689857')
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (3, NULL, 2, 1, NULL, 8, 59500, N'khd', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'346436')
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (4, NULL, 3, 1, NULL, 9, 0, N'gs', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'436')
+SET IDENTITY_INSERT [dbo].[Post] OFF
 
-
-INSERT INTO Post ([CategoryID],[UserID],[ModelID],[TownID],[Price],[PDescription],[Link],[PhoneNum],[ProducerID],[ImageUrl])
-VALUES ('1', '1', '2', '4', '850', ' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', 'https://youtu.be/Nvt6fdrrSEo', '0505689857', '2', 'https://www.takamine.com/templates/default/images/g90.png')
-Go
 
 select *from Categories

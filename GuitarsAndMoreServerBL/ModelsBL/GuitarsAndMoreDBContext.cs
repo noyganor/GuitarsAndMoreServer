@@ -37,9 +37,9 @@ namespace GuitarsAndMoreServerBL.Models
         public List<Model> GetListOfModels()
         {
             List<Model> p = Models.ToList();
-                           //.Include(p => p.ProducerId)
-                           //.Include(m => m.ModelId)
-                           //.Include(u => u.ModelName).ToList();
+            //.Include(p => p.ProducerId)
+            //.Include(m => m.ModelId)
+            //.Include(u => u.ModelName).ToList();
             return p;
         }
         public User UpdateUserDetalis(User user, User updatedUser)
@@ -55,7 +55,8 @@ namespace GuitarsAndMoreServerBL.Models
                 currentUser.Nickname = updatedUser.Nickname;
                 currentUser.Gender = updatedUser.Gender;
                 currentUser.FavBand = updatedUser.FavBand;
-                this.SaveChanges();
+                if (currentUser.Pass != updatedUser.Pass || currentUser.Email != currentUser.Email || currentUser.PhoneNum != updatedUser.PhoneNum || currentUser.Nickname != updatedUser.Nickname || currentUser.Gender != updatedUser.Gender || currentUser.FavBand != updatedUser.FavBand)
+                    this.SaveChanges();
                 return currentUser;
             }
             catch (Exception e)
