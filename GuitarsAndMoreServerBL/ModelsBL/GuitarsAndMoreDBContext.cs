@@ -47,6 +47,11 @@ namespace GuitarsAndMoreServerBL.Models
             try
             {
                 User currentUser = this.Users
+                 .Include(us => us.Posts)
+                .Include(uc => uc.UserFavoritePosts)
+                .Include(us => us.UserReviewSellers)
+                .Include(us => us.UserReviewUsers)
+                .Include(g => g.Gender)
                 .Where(u => u.UserId == user.UserId).FirstOrDefault();
 
                 currentUser.Pass = updatedUser.Pass;
@@ -55,8 +60,10 @@ namespace GuitarsAndMoreServerBL.Models
                 currentUser.Nickname = updatedUser.Nickname;
                 currentUser.Gender = updatedUser.Gender;
                 currentUser.FavBand = updatedUser.FavBand;
-                if (currentUser.Pass != updatedUser.Pass || currentUser.Email != currentUser.Email || currentUser.PhoneNum != updatedUser.PhoneNum || currentUser.Nickname != updatedUser.Nickname || currentUser.Gender != updatedUser.Gender || currentUser.FavBand != updatedUser.FavBand)
-                    this.SaveChanges();
+
+                this.ChangeTracker.Clear();
+                this.Entry(currentUser).State = EntityState.Modified;
+                this.SaveChanges();
                 return currentUser;
             }
             catch (Exception e)
