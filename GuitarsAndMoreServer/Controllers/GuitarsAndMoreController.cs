@@ -140,6 +140,7 @@ namespace GuitarsAndMoreServer.Controllers
 
                     try
                     {
+                        
                         context.UserFavoritePosts.Remove(uFavPost);
                         context.SaveChanges();
                     }
