@@ -54,6 +54,7 @@ namespace GuitarsAndMoreServer.Controllers
             {
                 context.Users.Add(u);
                 context.SaveChanges();
+                HttpContext.Session.SetObject("theUser", u);
                 return u;
             }
 
@@ -77,8 +78,8 @@ namespace GuitarsAndMoreServer.Controllers
                     ModelReviews = context.ModelReviews.ToList(),
                     Categories = context.Categories.ToList(),
                     Producers = context.Producers.ToList(),
-                    Towns = context.Towns.ToList(),
-                    UserFavoritePosts = context.UserFavoritePosts.ToList(),
+                    Towns = context.Towns.ToList()
+                    //UserFavoritePosts = context.UserFavoritePosts.ToList(),
                 };
 
                 return tables;

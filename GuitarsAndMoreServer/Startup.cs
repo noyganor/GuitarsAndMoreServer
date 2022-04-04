@@ -60,6 +60,17 @@ namespace GuitarsAndMoreServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.Use(async (context, next) =>
+            {
+                await next();
+                if (context.Response.StatusCode == (int)System.Net.HttpStatusCode.NotFound &&
+                context.Request.Path.Value.Contains("jpg"))
+                {
+                    context.Request.Path = new PathString(@"/images/defaultuser.jpg");
+                    await next();
+                }
+            });
+
             app.UseStaticFiles(); //Added to have the wwwroot folder and server to accept calls to static files
             app.UseRouting();
             app.UseSession(); //Added to tell the server to use sessions!

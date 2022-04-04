@@ -15,6 +15,6 @@ namespace GuitarsAndMoreServer.DTO
         public List<Model> Models { get; set; }
         public List<Category> Categories { get; set; }
         public List<ModelReview> ModelReviews { get; set; }
-        public List<UserFavoritePost> UserFavoritePosts { get; set; }
+        //public List<UserFavoritePost> UserFavoritePosts { get; set; }
     }
 }
