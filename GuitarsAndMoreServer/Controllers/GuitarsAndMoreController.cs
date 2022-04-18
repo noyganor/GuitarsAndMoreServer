@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GuitarsAndMoreServerBL.Models;
 using GuitarsAndMoreServer.DTO;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuitarsAndMoreServer.Controllers
 {
@@ -208,6 +209,7 @@ namespace GuitarsAndMoreServer.Controllers
         {
             try
             {
+
                 context.Posts.Add(p);
                 context.SaveChanges();
                 return p;
@@ -224,23 +226,35 @@ namespace GuitarsAndMoreServer.Controllers
         [HttpDelete]
         public bool DeletePost([FromQuery] int postId)
         {
-            try
-            {
-
-                Post p = context.Posts.Where(t => t.PostId == postId).FirstOrDefault();
-                if (p != null)
+           // User user = HttpContext.Session.GetObject<User>("theUser");
+            //Check if user logged in and its ID is the same as the contact user ID
+           // if (user != null)
+           // {
+                try
                 {
-                    context.Posts.Remove(p);
-                    context.SaveChanges();
-                    return true;
+                    Post p = context.Posts.Include(pp => pp.UserFavoritePosts).Where(t => t.PostId == postId).FirstOrDefault();
+                    if (p != null)
+                    {
+                        context.ChangeTracker.Clear();
+                        foreach (UserFavoritePost ufp in p.UserFavoritePosts)
+                        {
+                            context.Entry(ufp).State = EntityState.Deleted;
+                        }
+                        context.Entry(p).State = EntityState.Deleted;
+                        context.SaveChanges();
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
+
+                catch (Exception e)
+                {
+                    return false;
+                   // return BadRequest();
+                }
             }
 
-            catch (Exception e)
-            {
-                return false;
-            }
+           // return Forbid();
         }
 
         [Route("UpdateUserDetails")]
