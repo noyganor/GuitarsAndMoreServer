@@ -96,6 +96,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("GetPosts")]
         [HttpGet]
+        //Get list of all posts from DB
         public List<Post> GetListOfPosts()
         {
             try
@@ -111,6 +112,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("GetModels")]
         [HttpGet]
+        //Get list of all models from DB
         public List<Model> GetListOfModels()
         {
             try
@@ -126,6 +128,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("AddPostToFavorites")]
         [HttpGet]
+        //Remove or Add post to user favorites
         public bool AddPostToUserFavorites([FromQuery] int postID)
         {
 
@@ -142,12 +145,13 @@ namespace GuitarsAndMoreServer.Controllers
 
                     try
                     {
-                        
+                        //try to remove the post from user favorites
                         context.UserFavoritePosts.Remove(uFavPost);
                         context.SaveChanges();
                     }
                     catch (Exception ex)
                     {
+                        //if there was an exception - the post would be added to user favorites
                         context.UserFavoritePosts.Add(uFavPost);
                         context.SaveChanges();
                     }
@@ -171,7 +175,7 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("UploadImage")]
         [HttpPost]
-
+        //Upload Image
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
             User user = HttpContext.Session.GetObject<User>("theUser");
@@ -205,32 +209,39 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("AddPost")]
         [HttpPost]
+        //Add post to DB
         public Post AddPost(Post p)
         {
-            try
+            User user = HttpContext.Session.GetObject<User>("theUser");
+            //Check if user logged in and its ID is the same as the contact user ID
+            if (user != null)
             {
+                try
+                {
+                    context.Posts.Add(p);
+                    context.SaveChanges();
+                    return p;
+                }
 
-                context.Posts.Add(p);
-                context.SaveChanges();
-                return p;
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
             }
-
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
+            return null;
         }
 
         [Route("DeletePost")]
         [HttpDelete]
         public bool DeletePost([FromQuery] int postId)
         {
-           // User user = HttpContext.Session.GetObject<User>("theUser");
-            //Check if user logged in and its ID is the same as the contact user ID
-           // if (user != null)
-           // {
-                try
+
+            try
+            {
+                User user = HttpContext.Session.GetObject<User>("theUser");
+                //Check if user logged in and its ID is the same as the contact user ID
+                if (user != null)
                 {
                     Post p = context.Posts.Include(pp => pp.UserFavoritePosts).Where(t => t.PostId == postId).FirstOrDefault();
                     if (p != null)
@@ -246,16 +257,17 @@ namespace GuitarsAndMoreServer.Controllers
                     }
                     return false;
                 }
-
-                catch (Exception e)
-                {
-                    return false;
-                   // return BadRequest();
-                }
+                return false;
             }
 
-           // return Forbid();
+            catch (Exception e)
+            {
+                return false;
+                // return BadRequest();
+            }
+            // return Forbid();
         }
+
 
         [Route("UpdateUserDetails")]
         [HttpPost]
@@ -303,14 +315,21 @@ namespace GuitarsAndMoreServer.Controllers
 
         [Route("FindGender")]
         [HttpGet]
+        //Get gender name where genderid is the same
         public string FindGender([FromQuery] int genderId)
         {
             try
             {
-                Gender gender = context.Genders.Where(g => g.GenderId == genderId).FirstOrDefault();
-                return gender.Gender1;
+                User user = HttpContext.Session.GetObject<User>("theUser");
+                //Check if user logged in and its ID is the same as the contact user ID
+                if (user != null)
+                {
+                    Gender gender = context.Genders.Where(g => g.GenderId == genderId).FirstOrDefault();
+                    return gender.Gender1;
+                }
+                return null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return null;
