@@ -410,3 +410,4 @@ SET IDENTITY_INSERT [dbo].[Post] OFF
 
 select *from Categories
 select * from UserFavoritePosts
+SELECT * FROM Post

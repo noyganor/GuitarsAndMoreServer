@@ -232,6 +232,31 @@ namespace GuitarsAndMoreServer.Controllers
             return null;
         }
 
+        [Route("EditPost")]
+        [HttpPost]
+        //Add post to DB
+        public Post EditPost(Post p)
+        {
+            User user = HttpContext.Session.GetObject<User>("theUser");
+            //Check if user logged in and its ID is the same as the contact user ID
+            if (user != null)
+            {
+                try
+                {
+                    context.Entry(p).State = EntityState.Modified;
+                    context.SaveChanges();
+                    return p;
+                }
+
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return null;
+                }
+            }
+            return null;
+        }
+
         [Route("DeletePost")]
         [HttpDelete]
         public bool DeletePost([FromQuery] int postId)
