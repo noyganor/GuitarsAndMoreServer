@@ -178,9 +178,10 @@ namespace GuitarsAndMoreServer.Controllers
         //Upload Image
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
+            bool isRegistered = false;
             User user = HttpContext.Session.GetObject<User>("theUser");
             //Check if user logged in and its ID is the same as the contact user ID
-            if (user != null)
+            if (user != null || isRegistered)
             {
                 if (file == null)
                 {
