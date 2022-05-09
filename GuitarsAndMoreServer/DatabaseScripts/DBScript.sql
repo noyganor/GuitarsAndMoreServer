@@ -407,6 +407,7 @@ INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (4, NULL, 3, 1, NULL, 9, 0, N'gs', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'436')
 SET IDENTITY_INSERT [dbo].[Post] OFF
 
+UPDATE Post Set Link='https://www.youtube.com/embed/2kYKYf8wE-k'
 
 select *from Categories
 select * from UserFavoritePosts
