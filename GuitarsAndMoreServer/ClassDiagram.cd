@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="GuitarsAndMoreServer.DTO.LookUpTables" Collapsed="true">
+    <Position X="6" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAQCQEAAAEAgAAAAAAAA=</HashCode>
+      <FileName>DTO\LookUpTables.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Areas" />
+      <Property Name="Categories" />
+      <Property Name="Genders" />
+      <Property Name="ModelReviews" />
+      <Property Name="Models" />
+      <Property Name="Producers" />
+      <Property Name="Towns" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServer.DTO.Posts">
+    <Position X="11" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\Posts.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PostsLst" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.GuitarsAndMoreDBContext" Collapsed="true">
+    <Position X="11" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Area" Collapsed="true">
+    <Position X="4" Y="11.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Category">
+    <Position X="8.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Gender">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Model" Collapsed="true">
+    <Position X="7" Y="12.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.ModelReview">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Model" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Post">
+    <Position X="8.5" Y="5.25" Width="1.75" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Category" />
+      <Property Name="Producer" />
+      <Property Name="Review" />
+      <Property Name="Town" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Producer">
+    <Position X="10.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Town">
+    <Position X="6" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.User">
+    <Position X="7" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Gender" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.UserFavoritePost">
+    <Position X="6" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="User" />
+      <Property Name="Post" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.UserReview">
+    <Position X="9.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Seller" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

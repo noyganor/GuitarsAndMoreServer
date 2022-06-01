@@ -409,6 +409,11 @@ SET IDENTITY_INSERT [dbo].[Post] OFF
 
 UPDATE Post Set Link='https://www.youtube.com/embed/2kYKYf8wE-k'
 
+ALTER TABLE Users
+ADD IsManager BIT 
+Go
+
 select *from Categories
 select * from UserFavoritePosts
-SELECT * FROM Post
+select * from Post
+SELECT * FROM Users

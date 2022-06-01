@@ -361,5 +361,32 @@ namespace GuitarsAndMoreServer.Controllers
                 return null;
             }
         }
+
+        [Route("SetManager")]
+        [HttpGet]
+        public bool SetManager([FromQuery] string email)
+        {
+            try
+            {
+                User user = HttpContext.Session.GetObject<User>("theUser");
+                //Check if user logged in and its ID is the same as the contact user ID
+                if (user != null)
+                {
+                    User foundUser = context.Users.Where(u => u.Email == email).FirstOrDefault();
+                    if (foundUser != null)
+                    {
+                        foundUser.IsManager = true;
+                        return true;
+                    }
+                      
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }

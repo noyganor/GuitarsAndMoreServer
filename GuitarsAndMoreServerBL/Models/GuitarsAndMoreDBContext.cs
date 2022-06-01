@@ -203,7 +203,7 @@ namespace GuitarsAndMoreServerBL.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasIndex(e => e.Email, "UQ__Users__A9D10534DD4519FA")
+                entity.HasIndex(e => e.Email, "UQ__Users__A9D1053477C417BC")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasColumnName("UserID");

@@ -25,6 +25,7 @@ namespace GuitarsAndMoreServerBL.Models
         public int GenderId { get; set; }
         public string FavBand { get; set; }
         public DateTime JoinDate { get; set; }
+        public bool? IsManager { get; set; }
 
         public virtual Gender Gender { get; set; }
         public virtual ICollection<ModelReview> ModelReviews { get; set; }

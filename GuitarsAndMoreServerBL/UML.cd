@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="GuitarsAndMoreServerBL.Models.Area">
+    <Position X="1.5" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAgAAAA=</HashCode>
+      <FileName>Models\Area.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Category">
+    <Position X="3.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Gender">
+    <Position X="5" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.GuitarsAndMoreDBContext">
+    <Position X="9.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAYIQAAAABAAAAABAMQCREAAAEAgQAAAAEAA=</HashCode>
+      <FileName>Models\GuitarsAndMoreDBContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Model">
+    <Position X="1.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAABAAAAIAAAQAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Models\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.ModelReview">
+    <Position X="3.25" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAEAAAAAIgAAQAAAAAAAAgAAAAAEAA=</HashCode>
+      <FileName>Models\ModelReview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Post">
+    <Position X="5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAABQAAAAwABAgEAAAAAAIgAAAAQAIAAEAiAQABAGAA=</HashCode>
+      <FileName>Models\Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Producer">
+    <Position X="6.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAABAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Producer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.Town">
+    <Position X="1.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAYAAAAQBAAAA=</HashCode>
+      <FileName>Models\Town.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.User">
+    <Position X="3.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAARAAAAACQgAACABAAAABgAAQAAEABAAAAAQAABEAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.UserFavoritePost">
+    <Position X="5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAEAAAAAAAgACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserFavoritePost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuitarsAndMoreServerBL.Models.UserReview">
+    <Position X="7" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAIIABAAAAAgAAAAAAQAIAAAAAAAACAA=</HashCode>
+      <FileName>Models\UserReview.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
