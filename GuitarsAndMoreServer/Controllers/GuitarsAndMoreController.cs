@@ -61,6 +61,7 @@ namespace GuitarsAndMoreServer.Controllers
 
             catch (Exception e)
             {
+                Console.Write(e.Message);
                 return null;
             }
         }

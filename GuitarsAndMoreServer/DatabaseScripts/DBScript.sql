@@ -366,6 +366,12 @@ Go
 INSERT INTO Users ([Email],[Nickname],[Pass],[VerPassword],[PhoneNum],[GenderID],[FavBand])
 VALUES ('noiganor12@gmail.com', 'Noyga', 'nganor', 'nganor', '0505689857', '1', 'Ed Sheeran')
 Go
+INSERT INTO Users ([Email],[Nickname],[Pass],[VerPassword],[PhoneNum],[GenderID],[FavBand],[IsManager])
+VALUES ('mayabary@gmail.com', 'Mayabaryo', 'maya1234', 'maya1234', '0505643678', '2', 'Harry Styles',1)
+Go
+INSERT INTO Users ([Email],[Nickname],[Pass],[VerPassword],[PhoneNum],[GenderID],[FavBand],[IsManager])
+VALUES ('noa@gmail.com', 'Heilparn', 'noa12345', 'noa12345', '0525813678', '3', 'Coldplay',0)
+Go
 
 
 
@@ -405,6 +411,10 @@ INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (2, NULL, 1, 1, 2, 4, 850, N' .במצב חדש ונמכרת עקב חוסר שימוש .ET986K דגם Takamine גיטרה חשמלית אדומה מאת ', N'https://youtu.be/Nvt6fdrrSEo', N'https://www.takamine.com/templates/default/images/g90.png', 2, N'0505689857')
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (3, NULL, 2, 1, NULL, 8, 59500, N'khd', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'346436')
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (4, NULL, 3, 1, NULL, 9, 0, N'gs', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'436')
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) 
+VALUES (5, NULL, 2, 3, 1, 5, 320, N'אחלה מוצר', NULL, NULL, 1, N'0524338353')
+INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) 
+VALUES (6, NULL, 3, 4, 2, 9, 1450, N'מיועד לילדים עד גיל 12', NULL ,NULL, 2, N'0345789457')
 SET IDENTITY_INSERT [dbo].[Post] OFF
 
 UPDATE Post Set Link='https://www.youtube.com/embed/2kYKYf8wE-k'
@@ -416,7 +426,8 @@ Go
 select *from Categories
 select * from UserFavoritePosts
 select * from Post
-SELECT * FROM Users
+select * from Users
+
 
 
 UPDATE Users
