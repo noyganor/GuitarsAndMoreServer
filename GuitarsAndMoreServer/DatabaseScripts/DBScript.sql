@@ -417,3 +417,8 @@ select *from Categories
 select * from UserFavoritePosts
 select * from Post
 SELECT * FROM Users
+
+
+UPDATE Users
+SET [IsManager] = 1
+WHERE [UserID] = 1;

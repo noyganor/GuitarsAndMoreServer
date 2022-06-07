@@ -376,10 +376,36 @@ namespace GuitarsAndMoreServer.Controllers
                     if (foundUser != null)
                     {
                         foundUser.IsManager = true;
+                        context.SaveChanges();
                         return true;
                     }
-                      
+
                 }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        [Route("CheckEmailExistance")]
+        [HttpGet]
+        public bool CheckEmailExistance([FromQuery] string email)
+        {
+            try
+            {
+                List<User> userslst = context.GetListOfUsers();
+                if (userslst != null)
+                {
+                    foreach (User u in userslst)
+                    {
+                        if (u.Email == email)
+                            return true;
+                    }
+                }
+
                 return false;
             }
             catch (Exception e)

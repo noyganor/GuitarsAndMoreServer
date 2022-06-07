@@ -42,6 +42,12 @@ namespace GuitarsAndMoreServerBL.Models
             //.Include(u => u.ModelName).ToList();
             return p;
         }
+        public List<User> GetListOfUsers()
+        {
+            List<User> u = Users
+                           .Include(e => e.Email).ToList();
+            return u;
+        }
         public User UpdateUserDetalis(User user, User updatedUser)
         {
             try
