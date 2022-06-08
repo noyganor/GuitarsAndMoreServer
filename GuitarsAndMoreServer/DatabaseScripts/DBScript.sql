@@ -66,6 +66,11 @@ CREATE TABLE Users(
     FavBand NVARCHAR(255) NULL,
     JoinDate DATETIME DEFAULT GETDATE() NOT NULL
 );
+Go
+
+ALTER TABLE Users
+ADD IsManager BIT 
+Go
 
 CREATE TABLE ModelReviews(
     ModelReviewID INT identity(1,1) PRIMARY KEY NOT NULL,
@@ -412,16 +417,14 @@ INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (3, NULL, 2, 1, NULL, 8, 59500, N'khd', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'346436')
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) VALUES (4, NULL, 3, 1, NULL, 9, 0, N'gs', NULL, N'http://10.0.2.2:30991/Images/0.jpg', NULL, N'436')
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) 
-VALUES (5, NULL, 2, 3, 1, 5, 320, N'אחלה מוצר', NULL, NULL, 1, N'0524338353')
+VALUES (5, NULL, 2, 2, 1, 5, 320, N'אחלה מוצר', NULL, NULL, 1, N'0524338353')
 INSERT INTO [dbo].[Post] ([PostID], [ReviewID], [CategoryID], [UserID], [ModelID], [TownID], [Price], [PDescription], [Link], [ImageUrl], [ProducerID], [PhoneNum]) 
-VALUES (6, NULL, 3, 4, 2, 9, 1450, N'מיועד לילדים עד גיל 12', NULL ,NULL, 2, N'0345789457')
+VALUES (6, NULL, 3, 3, 2, 9, 1450, N'מיועד לילדים עד גיל 12', NULL ,NULL, 2, N'0345789457')
 SET IDENTITY_INSERT [dbo].[Post] OFF
 
 UPDATE Post Set Link='https://www.youtube.com/embed/2kYKYf8wE-k'
 
-ALTER TABLE Users
-ADD IsManager BIT 
-Go
+
 
 select *from Categories
 select * from UserFavoritePosts

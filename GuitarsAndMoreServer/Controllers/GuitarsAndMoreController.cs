@@ -280,6 +280,13 @@ namespace GuitarsAndMoreServer.Controllers
                         }
                         context.Entry(p).State = EntityState.Deleted;
                         context.SaveChanges();
+
+                        try
+                        {
+                            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", $"{postId}.jpg");
+                            System.IO.File.Delete(path);
+                        }
+                        catch { }
                         return true;
                     }
                     return false;
@@ -397,21 +404,15 @@ namespace GuitarsAndMoreServer.Controllers
         {
             try
             {
-                List<User> userslst = context.GetListOfUsers();
-                if (userslst != null)
-                {
-                    foreach (User u in userslst)
-                    {
-                        if (u.Email == email)
-                            return true;
-                    }
-                }
 
-                return false;
+
+
+                return context.EmailExist(email);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
                 return false;
             }
         }

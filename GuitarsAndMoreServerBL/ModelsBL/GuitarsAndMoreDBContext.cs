@@ -42,11 +42,11 @@ namespace GuitarsAndMoreServerBL.Models
             //.Include(u => u.ModelName).ToList();
             return p;
         }
-        public List<User> GetListOfUsers()
+        public bool EmailExist(string email)
         {
-            List<User> u = Users
-                           .Include(e => e.Email).ToList();
-            return u;
+            User u = Users.Where(e => e.Email == email).FirstOrDefault();
+
+            return u != null;
         }
         public User UpdateUserDetalis(User user, User updatedUser)
         {
